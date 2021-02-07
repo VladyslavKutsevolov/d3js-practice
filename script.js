@@ -13,19 +13,51 @@ const circle = g.append('circle')
     .attr('fill', 'yellow')
     .attr('stroke', 'black');
 
+const eyeSpacing = 100;
+const eyeYOffset = - 40;
+const eyeRadius = 30;
+const eyeBrowWidth = 50;
+const eyeBrowHeight = 15;
+const eyeBrowYOffset = -45;
 
-const leftEye = g.append('circle')
-    .attr('r', 30)
-    .attr('cx', - 100 )
-    .attr('cy', - 50)
-    .attr('fill', 'black');
+
+const eyeG = g.append('g')
+    .attr('transform', `translate(0, ${eyeYOffset})`);
+
+const eyeBrowG = eyeG
+    .append('g')
+        .attr('transform', `translate(0, ${eyeBrowYOffset})`);
+
+eyeBrowG
+    .transition().duration(2000)
+        .attr('transform', `translate(0, ${eyeBrowYOffset - 50})`)
+    .transition().duration(2000)
+        .attr('transform', `translate(0, ${eyeBrowYOffset})`)
 
 
-const rightEye = g.append('circle')
-    .attr('r', 30)
-    .attr('cx', 100 )
-    .attr('cy', - 50)
-    .attr('fill', 'black');
+
+const leftEye = eyeG.append('circle')
+    .attr('r', eyeRadius)
+    .attr('cx', - eyeSpacing )
+    .attr('cy', eyeYOffset);
+
+const rightEye = eyeG.append('circle')
+    .attr('r', eyeRadius)
+    .attr('cx', eyeSpacing )
+    .attr('cy', eyeYOffset);
+
+const leftEyeBrow = eyeBrowG.append('rect')
+    .attr('x', -eyeSpacing - eyeBrowWidth/2)
+    .attr('y', eyeBrowYOffset)
+    .attr('width', eyeBrowWidth)
+    .attr('height', eyeBrowHeight)
+
+const rightEyeBrow = eyeBrowG
+    .append('rect')
+        .attr('x', eyeSpacing - eyeBrowWidth/2)
+        .attr('y', eyeBrowYOffset)
+        .attr('width', eyeBrowWidth)
+        .attr('height', eyeBrowHeight)
 
 
 
