@@ -1,5 +1,5 @@
 
-
+//Smile face
 const svg = d3.select('svg');
 
 const width = +svg.attr('width');
@@ -39,12 +39,20 @@ eyeBrowG
 const leftEye = eyeG.append('circle')
     .attr('r', eyeRadius)
     .attr('cx', - eyeSpacing )
-    .attr('cy', eyeYOffset);
+    .attr('cy', eyeYOffset)
+    .transition().duration(2000)
+        .attr('cx', eyeSpacing + 10 )
+        .attr('cy', eyeYOffset + 20);
 
-const rightEye = eyeG.append('circle')
-    .attr('r', eyeRadius)
-    .attr('cx', eyeSpacing )
-    .attr('cy', eyeYOffset);
+const rightEye = eyeG
+    .append('circle')
+        .attr('r', eyeRadius)
+        .attr('cx', eyeSpacing )
+        .attr('cy', eyeYOffset)
+    .transition().duration(2000)
+        .attr('cx', eyeSpacing - 50 )
+        .attr('cy', eyeYOffset - 20)
+
 
 const leftEyeBrow = eyeBrowG.append('rect')
     .attr('x', -eyeSpacing - eyeBrowWidth/2)
