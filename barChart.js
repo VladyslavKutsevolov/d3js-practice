@@ -1,6 +1,6 @@
 const bar = d3.select('.bar-chart');
 
-const margin = { left: 150, top: 40, right: 20, bottom: 30 };
+const margin = { left: 150, top: 40, right: 20, bottom: 70 };
 
 const barWidth = +bar.attr('width') - margin.left - margin.right;
 const barHeight = +bar.attr('height') - margin.top - margin.bottom;
@@ -34,9 +34,11 @@ const render = data => {
         .selectAll('.domain, .tick line')
         .remove();
 
-    gBar.append('g')
+   const xAxisG = gBar.append('g')
         .call(xAxis)
         .attr('transform', `translate(0, ${barHeight})`)
+
+       xAxisG
         .select('.domain')
         .remove();
 
@@ -55,6 +57,12 @@ const render = data => {
     gBar.append('text')
         .attr('y', -10)
         .text('Top 10 Populous Countries')
+console.log(width)
+    xAxisG.append('text')
+        .attr('y', 50)
+        .attr('x', barWidth / 2)
+        .attr('fill', 'black')
+        .text('Population')
 }
 
 
