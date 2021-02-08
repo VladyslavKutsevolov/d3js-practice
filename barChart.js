@@ -1,6 +1,6 @@
 const bar = d3.select('.bar-chart');
 
-const margin = { left: 100, top: 20, right: 20, bottom: 20 };
+const margin = { left: 150, top: 40, right: 20, bottom: 30 };
 
 const barWidth = +bar.attr('width') - margin.left - margin.right;
 const barHeight = +bar.attr('height') - margin.top - margin.bottom;
@@ -50,7 +50,11 @@ const render = data => {
         .attr('y', d => y(yValue(d)))
         .attr('width', d => x(xValue(d)))
         .attr('height', d => y.bandwidth())
-        .attr('fill', 'steelblue')
+        .attr('fill', 'steelblue');
+
+    gBar.append('text')
+        .attr('y', -10)
+        .text('Top 10 Populous Countries')
 }
 
 
