@@ -19,8 +19,12 @@ const render = data => {
         .range([0, barHeight])
         .padding(.1);
 
+    const xAxisTicksFormat = num =>
+        d3.format('.3s')(num)
+            .replace('G', 'B')
+
     const yAxis = d3.axisLeft(y);
-    const xAxis = d3.axisBottom(x);
+    const xAxis = d3.axisBottom(x).tickFormat(xAxisTicksFormat);
 
     const gBar = bar.append('g')
         .attr('transform', `translate(${margin.left} ${margin.top})`)
@@ -32,7 +36,6 @@ const render = data => {
         .call(xAxis)
         .attr('transform', `translate(0, ${barHeight})`);
 
-console.log(height)
 
 
     gBar
