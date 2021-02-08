@@ -30,11 +30,15 @@ const render = data => {
         .attr('transform', `translate(${margin.left} ${margin.top})`)
 
     gBar.append('g')
-        .call(yAxis);
+        .call(yAxis)
+        .selectAll('.domain, .tick line')
+        .remove();
 
     gBar.append('g')
         .call(xAxis)
-        .attr('transform', `translate(0, ${barHeight})`);
+        .attr('transform', `translate(0, ${barHeight})`)
+        .select('.domain')
+        .remove();
 
 
 
