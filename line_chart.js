@@ -81,15 +81,7 @@ const render = data => {
         .attr('stroke-linejoin', 'round')
         .attr('fill', 'none')
         .attr('d', line(data));
-    // gBar
-    //     .selectAll('circle')
-    //     .data(data)
-    //     .enter()
-    //     .append('circle')
-    //     .attr('cy', d => y(yValue(d)))
-    //     .attr('cx', d => x(xValue(d)))
-    //     .attr('r', d => circleRadius)
-    //     .attr('fill', 'steelblue');
+
 
     gBar
         .append('text')
