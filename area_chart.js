@@ -26,6 +26,19 @@ const render = data => {
         .range([chartHeight, 0])
         .nice();
 
+    const area = d3.area()
+        .x(d => x(xValue(d)))
+        .y0(chartHeight)
+        .y1(d => y(yValue(d)))
+        .curve(d3.curveBasis);
+
+    const gBar = chart.append('g')
+        .attr('transform', `translate(${margin.left} ${margin.top})`)
+
+    gBar.append('path')
+        .attr('fill', 'steelblue')
+        .attr('d', area(data))
+
     const yAxis = d3.axisLeft(y)
         .tickSize(-chartWidth)
         .tickPadding(15);
@@ -35,8 +48,7 @@ const render = data => {
         .tickSize(-chartHeight)
         .tickPadding(10);
 
-    const gBar = chart.append('g')
-        .attr('transform', `translate(${margin.left} ${margin.top})`)
+
 
     const yAxisG = gBar.append('g')
         .call(yAxis)
@@ -68,18 +80,6 @@ const render = data => {
         .attr('x', chartWidth / 2)
         .attr('fill', 'black')
         .text(xAxisLabel);
-
-    const area = d3.area()
-        .x(d => x(xValue(d)))
-        .y0(chartHeight)
-        .y1(d => y(yValue(d)))
-        .curve(d3.curveBasis);
-
-
-    gBar.append('path')
-        .attr('fill', 'steelblue')
-        .attr('d', area(data))
-
 
     gBar
         .append('text')
