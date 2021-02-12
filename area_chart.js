@@ -85,7 +85,7 @@ const render = data => {
         .append('text')
         .attr('class', 'title')
         .attr('y', -10)
-        .text(title)
+        .text(title);
 }
 
 
@@ -93,7 +93,7 @@ d3.csv('https://vizhub.com/curran/datasets/temperature-in-san-francisco.csv')
     .then(data => {
         data.forEach(d => {
             d.temperature = +d.temperature;
-            d.timestamp = new Date(d.timestamp)
+            d.timestamp = new Date(d.timestamp);
         });
         render(data);
     });
