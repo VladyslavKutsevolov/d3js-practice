@@ -18,8 +18,8 @@ svg.call(d3.zoom().on('zoom', (e) => {
 
 
 Promise.all([
-    d3.tsv('https://unpkg.com/world-atlas@1.1.4/world/110m.tsv'),
-    d3.json('https://unpkg.com/world-atlas@1.1.4/world/110m.json')
+    d3.tsv('https://unpkg.com/world-atlas@1.1.4/world/50m.tsv'),
+    d3.json('https://unpkg.com/world-atlas@1.1.4/world/50m.json')
 ]).then(([tsvData, topoJSONData]) => {
     const countryName = tsvData.reduce((acc,d) => {
         acc[d.iso_n3] = d.name
