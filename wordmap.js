@@ -32,6 +32,7 @@ const colorLegend = (selection, props) => {
             `translate(0, ${i * spacing})`
         );
     groups.exit().remove();
+    //comment
 
     groupsEnter.append('circle')
         .merge(groups.select('circle'))
